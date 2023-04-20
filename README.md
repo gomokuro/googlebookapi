@@ -3,6 +3,7 @@ Google Book Api を使用したテストサイト
 
 ## Installation
 Windows上でVagrantとChefを使用した環境構築を前提とします。
+
 plaguinはvagrant-omnibusを使用しております。
 
 VagrantとChefで、Amazon Linux2 上にPHP8.1の環境を構築します。
@@ -10,8 +11,7 @@ VagrantとChefで、Amazon Linux2 上にPHP8.1の環境を構築します。
 1. 任意のディレクトリに本リポジトリをCloneします
 2. Vagrant_templateをVagrantと名前を変えます
 3. PowerShell等で `vagrant up --provision` コマンドを叩きます
-4. `vagrant port` でローカルのportを確認し、任意のSSHアプリでそのポートにSSH接続を行います。
-SSH接続情報   id:vagrant pass:vagrant
+4. `vagrant port` で表示されたportに任意のSSHアプリで接続を行います。SSH接続情報(id:vagrant pass:vagrant)
 5. `sudo su` でrootになり、`mysql` コマンドでmysql(maria)へログイン
 6. mysql上で以下コマンドでデータベースを作成
 ```
