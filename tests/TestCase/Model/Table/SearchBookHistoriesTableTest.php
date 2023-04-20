@@ -61,4 +61,23 @@ class SearchBookHistoriesTableTest extends TestCase
     {
         $this->markTestIncomplete('Not implemented yet.');
     }
+
+
+    public function testInsertHistory() :void
+    {
+        $dummySearchWord = '夏目漱石';
+        $jsonstr = '[{"kind":"books#volume","id":"IbKxAAAAIAAJ","etag":"50uX/K7oeaA","selfLink":"https://www.googleapis.com/books/v1/volumes/IbKxAAAAIAAJ","volumeInfo":{"title":"決定版夏目漱石","authors":["江藤淳"]}}]';
+        $data = json_decode($jsonstr);
+        
+        $this->SearchBookHistories->insertHistory($dummySearchWord, $data);
+
+        $entity = $this->SearchBookHistories->find()->where(['search_word'=>$dummySearchWord])->first();
+
+        $resultJsonstr =  json_encode($entity->search_result, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+
+        $this->assertEquals($jsonstr, $resultJsonstr);
+
+    }
+
+
 }

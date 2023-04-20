@@ -8,6 +8,7 @@ use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 use Cake\I18n\FrozenTime;
+use Cake\Utility\Text;
 
 /**
  * SearchBookHistories Model
@@ -79,8 +80,16 @@ class SearchBookHistoriesTable extends Table
     }
 
 
+    /**
+     * 検索ワードと検索結果を保存する
+     * 
+     * @param string $searchWord
+     * @param mix $resultData
+     * @return void
+     */
     public function insertHistory($searchWord, $resultData){
         $newEntity = $this->newEmptyEntity();
+        $newEntity->id = Text::uuid();
         $newEntity->search_datetime = FrozenTime::now();
         $newEntity->search_word = $searchWord;
         $newEntity->search_result = $resultData;
