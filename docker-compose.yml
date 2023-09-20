@@ -1,0 +1,27 @@
+version: "3"
+services:
+  web:
+    container_name: googlebookapi-web
+    build:
+      context: .
+      dockerfile: ./docker/httpd/Dockerfile
+    volumes:
+      - ./:/var/www/html/
+    ports:
+      - "8080:80"
+      - "4043:443"
+    depends_on:
+      - mysql
+  mysql:
+    container_name: googlebookapi-mysql
+    build:
+      dockerfile: ./docker/mysql/Dockerfile
+    volumes:
+      - ./docker/mysql/initdb:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql
+      MYSQL_DATABASE: 'sample_search_books'
+      MYSQL_USER: testuser
+      MYSQL_PASSWORD: testuser 
+    #ports:
+    #  - "3011:3306"

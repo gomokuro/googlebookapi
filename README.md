@@ -2,7 +2,17 @@
 Google Book Api を使用したテストサイト
 
 ## Installation
-Windows上でVagrantとChefを使用した環境構築を前提とします。
+### Docker
+Docker環境がすでにある前提とします。
+
+1. 任意のディレクトリに本リポジトリをCloneします
+2. docker-composer.yml がある場所で `docker-compose up -d` 
+3. googlebookapi-web のコンテナ内で、`cd /var/www/html` で移動、`composer install`
+4. googlebookapi-web のコンテナ内で、`php bin/cake.php migrations migrate`
+5. localhost:8080 へブラウザでアクセス
+
+### Vagrant
+VagrantとChefを使用した環境構築を前提とします。
 
 plaguinはvagrant-omnibusを使用しております。
 
@@ -37,6 +47,3 @@ GRANT ALL PRIVILEGES ON sample_search_books.* TO sample_user@localhost;
 14. `bin/cake migrations migrate` でテーブルを構築
 15. http://192.168.151.13/ に接続
 
-
-## Other Installation
-PHP8.1が動作する環境であれば特別複雑なことはしていないので、動作すると思います。
