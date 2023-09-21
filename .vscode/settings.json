@@ -1,0 +1,11 @@
+{
+    "phpunit.command": "docker exec googlebookapi-web", 
+    "phpunit.php": "php",
+    "phpunit.phpunit": "/var/www/html/vendor/bin/phpunit",
+    "phpunit.args": [
+        "-c", "/var/www/html/phpunit.xml.dist"
+    ],
+    "phpunit.paths": {
+        "${workspaceFolder}": "/var/www/html"
+    }
+}
